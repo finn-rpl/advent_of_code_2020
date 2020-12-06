@@ -28,10 +28,9 @@ def get_advent_input(day):
         open('d'+day+'.csv')
     except FileNotFoundError:
         import requests
-        r = requests.get('https://adventofcode.com/2020/day/'+day+'/input',cookies={'session':'53616c7465645f5f207a227540223b3e27d8339fe4cdf446ab8e6459752c271bd3c8d8328672728d4a4333cfe3922244'})
+        with open('login.txt') as lf:
+            login = lf.read().strip('\n')
+        r = requests.get('https://adventofcode.com/2020/day/'+day+'/input',cookies={'session':login})
         with open('d'+day+'.csv', 'w+') as f:
             f.write(r.text)
             print(r.elapsed)
-            
-def dummy():
-    pass
