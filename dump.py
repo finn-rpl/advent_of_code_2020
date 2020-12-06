@@ -1,13 +1,8 @@
-import csv
-import json
-import numpy as np
-import pandas as pd
-import scipy as sp
 
 
 def read_list(input_file, data_type=str):
     with open(input_file, 'r') as listf:
-        lines = listf.strip('\n').split('\n')
+        lines = listf.read().strip('\n').split('\n')
         out = []
         for line in lines:
             out.append(data_type(line))
@@ -32,13 +27,10 @@ def find_three_sums(input_list, desired_total):
 # print(find_two_sums(read_list('day1.csv', int),2020))
 # print(find_three_sums(read_list('day1.csv',int),2020))
 
-def csv_to_list(input_file, delim=' '):
-    with open(input_file, 'r') as csvf:
-        csv_reader = csv.reader(csvf, delimiter=delim)
-        out = []
-        for line in csv_reader:
-            out.append(line)
-        return out
+def read_xsv(input_file, rowdelim='\n', coldelim=' '):
+    with open(input_file, 'r') as xsvf:
+        lines = xsvf.read().strip('\n').split(rowdelim)
+        return [line.split(coldelim) for line in lines]
 
 
 def password_validation(input_data):
@@ -62,8 +54,8 @@ def password_validation2(input_data):
             valid_passwords += 1
     return valid_passwords
 
-# print(password_validation1(csv_to_list('day2.csv')))
-# print(password_validation2(csv_to_list('day2.csv')))
+# print(password_validation1(read_xsv('day2.csv')))
+# print(password_validation2(read_xsv('day2.csv')))
 
 
 def tree_hit(input_data, xs, ys):
@@ -83,6 +75,7 @@ def tree_hit(input_data, xs, ys):
 # print(tree_hit(d3, 3, 1))
 # print(tree_hit(d3, 1, 1) * tree_hit(d3, 3, 1) * tree_hit(d3, 5, 1) * tree_hit(d3, 7, 1) * tree_hit(d3, 1, 2))
 
+
 def read_batch(input_file):
     with open(input_file, 'r') as file:
         out = []
@@ -95,7 +88,7 @@ def read_batch(input_file):
     return out
 
 
-d4 = read_batch('day4.csv')
+d4 = read_batch('day4/day4.csv')
 required = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid']
 eyecols = ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
 
@@ -111,7 +104,12 @@ def day4(input_dict):
             continue
         if len(p['hcl']) != 7 or p['hcl'][0] != '#':
             continue
-        if 1920 > int(p['byr']) or int(p['byr']) > 2020 or 2010 > int(p['iyr']) or int(p['iyr']) > 2020 or 2020 > int(p['eyr']) or int(p['eyr']) > 2030:
+        if 1920 > int(p['byr']) \
+                or int(p['byr']) > 2020 \
+                or 2010 > int(p['iyr']) \
+                or int(p['iyr']) > 2020 \
+                or 2020 > int(p['eyr']) \
+                or int(p['eyr']) > 2030:
             continue
         if p['hgt'][-2:] == 'in':
             if 59 > int(p['hgt'][:-2]) or int(p['hgt'][:-2]) > 76:
@@ -130,10 +128,10 @@ def day4(input_dict):
 # print(day4(d4))
 
 
-d5 = read_list('day5.csv')
-ind = {0:64, 1:32, 2:16, 3:8, 4:4, 5:2, 6:1, 7:4, 8:2, 9:1}
+# d5 = read_list('day5/day5.csv')
+ind = {0: 64, 1: 32, 2: 16, 3: 8, 4: 4, 5: 2, 6: 1, 7: 4, 8: 2, 9: 1}
 # NOTE: [[0]*8]*128 != [[0 for i in range(8)] for i in range(128)]
-seats = [[0 for i in range(8)] for i in range(128)]  # pt2 addition
+seats = [[0 for i in range(8)] for j in range(128)]  # pt2 addition
 
 
 def day5(input_list):
@@ -147,10 +145,10 @@ def day5(input_list):
                 row += ind[i]
             elif bp[i] == 'R':
                 col += ind[i]
-        id = (row*8)+col  # pt2 addition
-        if id > highest:
-            highest = id
-        ids.append(id)  # pt2 addition
+        pid = (row*8)+col  # pt2 addition
+        if pid > highest:
+            highest = pid
+        ids.append(pid)  # pt2 addition
         seats[row][col] = 1  # pt2 addition
     print(highest)
     for i in range(len(seats)):  # pt2 addition
@@ -173,7 +171,8 @@ def read_day6(input_file):
     return out
 
 
-d6 = read_day6('day6.csv')
+# d6 = read_day6('day6/day6.csv')
+
 
 def day6(input_list):
     count1 = 0
@@ -196,15 +195,17 @@ def day6(input_list):
 
 # day6(d6)
 
-od6 = read_list('2019day6.csv')
 
-def oldDay6(input_list):
+# od6 = read_list('2019day6/2019day6.csv')
+
+
+def oldday6(input_list):
     dd = {}
     links = []
     count = 0
     for i in input_list:
-        k,v = i.split(')')
-        links.append((k,v))
+        k, v = i.split(')')
+        links.append((k, v))
         if k in dd:
             dd[k].append(v)
         else:
@@ -235,5 +236,5 @@ def oldDay6(input_list):
     print(count)
     print(len([i for i in path if path[i] == 0]))
 
-oldDay6(od6)
 
+# oldday6(od6)

@@ -1,5 +1,6 @@
 import utils
 
+
 def day4(input_dict):
     required = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid']
     eyecols = ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
@@ -14,11 +15,16 @@ def day4(input_dict):
             continue
         n += 1
 
-        ## PART 2
+        # PART 2
 
         if len(p['hcl']) != 7 or p['hcl'][0] != '#':
             continue
-        if 1920 > int(p['byr']) or int(p['byr']) > 2020 or 2010 > int(p['iyr']) or int(p['iyr']) > 2020 or 2020 > int(p['eyr']) or int(p['eyr']) > 2030:
+        if 1920 > int(p['byr']) \
+                or int(p['byr']) > 2020 \
+                or 2010 > int(p['iyr']) \
+                or int(p['iyr']) > 2020 \
+                or 2020 > int(p['eyr']) \
+                or int(p['eyr']) > 2030:
             continue
         if p['hgt'][-2:] == 'in':
             if 59 > int(p['hgt'][:-2]) or int(p['hgt'][:-2]) > 76:
