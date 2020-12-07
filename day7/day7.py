@@ -32,7 +32,7 @@ def build_tree(dict_pairs):
     return tree
 
 
-def build_tree_reverse_recersive(dict_pairs):
+def build_tree_reverse_recursive(dict_pairs):
     tree = ['shiny gold']
     parents = []
     past = -1
@@ -61,7 +61,7 @@ def main():
 
     print(len(build_tree(pairs_dictionary))-1)
 
-    print(len(build_tree_reverse_recersive(pairs_dictionary))-1)
+    print(len(build_tree_reverse_recursive(pairs_dictionary)) - 1)
 
 
 if __name__ == '__main__':
