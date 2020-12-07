@@ -1,6 +1,6 @@
 import utils
 
-def day7tree(input_list):
+def day7pairs(input_list):
     dd = {}
 
     for line in input_list:
@@ -19,41 +19,41 @@ def day7tree(input_list):
 
 def day7(input_list):
 
-    dd = day7tree(input_list)
+    dd = day7pairs(input_list)
 
-    paths = ['shiny gold']
+    tree = ['shiny gold']
     past = -1
-    while len(paths) != past:
-        past = len(paths)
+    while len(tree) != past:
+        past = len(tree)
         for k in dd:
             for v in dd[k]:
-                if v in paths and k not in paths:
-                    paths.append(k)
+                if v in tree and k not in tree:
+                    tree.append(k)
 
-    return len(paths)-1
+    return len(tree)-1
 
 def day7pt2(input_list):
 
-    dd = day7tree(input_list)
+    dd = day7pairs(input_list)
 
-    paths = ['shiny gold']
+    tree = ['shiny gold']
     parents = []
     past = -1
-    while len(paths) != past:
-        past = len(paths)
-        added = []
-        for k in paths:
-            if k in paths and k not in parents:
-                added.append(k)
+    while len(tree) != past:
+        past = len(tree)
+        new_parents = []
+        for k in tree:
+            if k in tree and k not in parents:
+                new_parents.append(k)
                 for v in dd[k]:
                     for i in range(dd[k][v]):
-                        paths.append(v)
+                        tree.append(v)
             for v in dd[k]:
-                if v in paths and k not in paths:
-                    paths.append(k)
-        parents.extend(added)
+                if v in tree and k not in tree:
+                    tree.append(k)
+        parents.extend(new_parents)
 
-    return len(paths)-1
+    return len(tree)-1
 
 
 if __name__ == '__main__':

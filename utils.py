@@ -25,12 +25,16 @@ def read_batch(input_file):
 def get_advent_input(day):
     day = str(day)
     try:
-        open('d'+day+'.csv')
+        open('day'+day+'/day'+day+'.csv')
     except FileNotFoundError:
         import requests
         with open('login.txt') as lf:
             login = lf.read().strip('\n')
         r = requests.get('https://adventofcode.com/2020/day/'+day+'/input',cookies={'session':login})
-        with open('d'+day+'.csv', 'w+') as f:
+        with open('day'+day+'/day'+day+'.csv', 'w+') as f:
             f.write(r.text)
             print(r.elapsed)
+
+if __name__ == '__main__':
+    import time
+    get_advent_input(list(filter(None,time.ctime().split(' ')))[2])
