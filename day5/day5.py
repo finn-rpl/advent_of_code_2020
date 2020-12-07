@@ -1,5 +1,10 @@
 import utils
 
+'''
+Advent of code 2020
+Day 5
+'''
+
 
 def day5(input_list):
     ind = {0: 64, 1: 32, 2: 16, 3: 8, 4: 4, 5: 2, 6: 1, 7: 4, 8: 2, 9: 1}
@@ -32,6 +37,11 @@ def day5(input_list):
 
     return highest, seatid
 
-if __name__ == '__main__':
+
+def main():
     d5 = utils.read_list('day5.csv')
     print(day5(d5))
+
+
+if __name__ == '__main__':
+    main()

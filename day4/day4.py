@@ -1,5 +1,10 @@
 import utils
 
+'''
+Advent of code 2020
+Day 4
+'''
+
 
 def day4(input_dict):
     required = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid']

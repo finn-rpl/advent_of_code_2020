@@ -1,5 +1,11 @@
 import utils
 
+'''
+Advent of code 2020
+Day 3
+'''
+
+
 def tree_hit(input_data, xs, ys):
     x = xs
     y = ys
@@ -14,7 +20,11 @@ def tree_hit(input_data, xs, ys):
     return out
 
 
-if __name__ == '__main__':
+def main():
     d3 = utils.read_list('day3.csv')
     print(tree_hit(d3, 3, 1))
     print(tree_hit(d3, 1, 1) * tree_hit(d3, 3, 1) * tree_hit(d3, 5, 1) * tree_hit(d3, 7, 1) * tree_hit(d3, 1, 2))
+
+
+if __name__ == '__main__':
+    main()

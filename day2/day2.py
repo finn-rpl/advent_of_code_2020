@@ -1,7 +1,12 @@
 import utils
 
+'''
+Advent of code 2020
+Day 2
+'''
 
-def password_validation(input_data):
+
+def part1(input_data):
     valid_passwords = 0
     for line in input_data:
         bounds = line[0].split('-')
@@ -12,7 +17,7 @@ def password_validation(input_data):
     return valid_passwords
 
 
-def password_validation2(input_data):
+def part2(input_data):
     valid_passwords = 0
     for line in input_data:
         bounds = line[0].split('-')
@@ -23,6 +28,10 @@ def password_validation2(input_data):
     return valid_passwords
 
 
+def main():
+    print(part1(utils.read_xsv('day2.csv')))
+    print(part2(utils.read_xsv('day2.csv')))
+
+
 if __name__ == '__main__':
-    print(password_validation(utils.read_xsv('day2.csv')))
-    print(password_validation2(utils.read_xsv('day2.csv')))
+    main()

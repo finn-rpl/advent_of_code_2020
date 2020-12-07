@@ -1,5 +1,11 @@
 import utils
 
+'''
+Advent of code 2020
+Day 6
+'''
+
+
 def day6(input_list):
     n1 = 0
     n2 = 0
@@ -21,6 +27,10 @@ def day6(input_list):
     return n1, n2
 
 
-if __name__ == '__main__':
-    d6 = utils.read_xsv('day6.csv',rowdelim='\n\n', coldelim='\n')
+def main():
+    d6 = utils.read_xsv('day6.csv', rowdelim='\n\n', coldelim='\n')
     print(day6(d6))
+
+
+if __name__ == '__main__':
+    main()

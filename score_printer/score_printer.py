@@ -12,9 +12,9 @@ for i in range(1, 26):
 pzls = {}
 for m in dd['members']:
     mm = dd['members'][m]
-    for j in range(1,26):
+    for j in range(1, 26):
         j = str(j)
-        for k in range(1,3):
+        for k in range(1, 3):
             k = str(k)
             try:
                 ts = int(mm["completion_day_level"][j][k]['get_star_ts'])
@@ -29,6 +29,6 @@ for p in pzls:
     print(p)
     for m in lb:
         mj = m + '                '
-        print(mj[:15], end = ': ')
+        print(mj[:15], end=': ')
         print(time.ctime(lb[m]))
 
