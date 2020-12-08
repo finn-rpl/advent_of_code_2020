@@ -17,7 +17,7 @@ def debug(debug_list):
 
 
 def main():
-    d8 = utils.read_xsv('day8eg.csv')
+    d8 = utils.read_xsv('day8.csv')
     print(debug(d8))
 
 

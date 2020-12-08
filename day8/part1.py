@@ -26,7 +26,7 @@ def run(input_list, detect_exit=False):
 
 
 def main():
-    d8 = utils.read_xsv('day8eg.csv')
+    d8 = utils.read_xsv('day8.csv')
     print(run(d8))
 
 
