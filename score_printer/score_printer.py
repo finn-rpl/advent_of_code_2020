@@ -1,7 +1,7 @@
 import json
 import time
 
-with open('scores_day8.json', 'r') as jf:
+with open('scores_day11.json', 'r') as jf:
     dd = json.load(jf)
 
 template = []
